@@ -21,10 +21,15 @@ const router = createRouter({
     {
       path: "/order",
       name: "order",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import("../views/order/order.vue"),
+    },
+    {
+      path: "/city",
+      name: "city",
+      component: () => import("../views/home/city/city.vue"),
+      meta: {
+        hideTabbar: true,
+      },
     },
   ],
 });

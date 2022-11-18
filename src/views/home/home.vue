@@ -1,4 +1,23 @@
-<script setup></script>
+<script setup>
+import { useRouter } from "vue-router";
+import { useCityStore } from "@/stores/city.js";
+
+//hook
+const router = useRouter();
+const cityStore = useCityStore();
+
+//方法----获取位置信息
+const positionClick = () => {
+  navigator.geolocation.getCurrentPosition((res) => {
+    console.log(res);
+  });
+};
+
+//方法----跳转城市选择页面
+const cityClick = () => {
+  router.push("/city");
+};
+</script>
 
 <template>
   <div class="home">
@@ -11,8 +30,8 @@
     </div>
 
     <div class="location">
-      <div class="city">广州</div>
-      <div class="position">
+      <div class="city" @click="cityClick">{{ cityStore.curCity }}</div>
+      <div class="position" @click="positionClick">
         <span>我的位置</span>
         <van-icon name="location-o" color="orange" />
       </div>
